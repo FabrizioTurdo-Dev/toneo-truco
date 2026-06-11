@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla - Torneo de Truco Berlin</title>
+    <link href="tabla.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚽ TORNEO DE TRUCO BERLIN</h1>
+            <p class="subtitle">Tabla de posiciones en vivo</p>
+        </header>
+
+        <!-- Tabla de Posiciones -->
+        <div class="card">
+            <h2>📊 Tabla de posiciones</h2>
+            
+            <div class="group-selector" id="groupSelector"></div>
+            
+            <button class="refresh-btn" onclick="refreshData()">🔄 Actualizar</button>
+            
+            <div id="standingsContainer"></div>
+            
+            <div class="last-updated" id="lastUpdated"></div>
+        </div>
+
+        <!-- Próximos partidos -->
+        <div class="card">
+            <h2>⚔️ Próximos partidos</h2>
+            <div id="nextMatchesContainer"></div>
+        </div>
+
+        <!-- Mis resultados (todos los partidos) -->
+        <div class="card">
+            <h2>📈 Todos los partidos</h2>
+            <div id="allMatchesContainer"></div>
+        </div>
+    </div>
+
+    <script src="tabla.js"></script>
+</body>
+</html>
