@@ -1,203 +1,113 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* --- Estética temática: Torneo de Truco --- */
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            min-height: 100vh;
-            padding: 20px;
-        }
+:root {
+    --color-paño: #1e5e34;      /* Verde mesa de juego */
+    --color-madera: #5d4037;    /* Madera rústica */
+    --color-oro: #d4af37;       /* Detalles de naipes */
+    --color-crema: #fdfaf6;     /* Color de carta */
+    --color-texto: #2c2c2c;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        header {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+body { 
+    font-family: 'Georgia', serif; 
+    background: var(--color-paño); 
+    color: var(--color-texto); 
+    min-height: 100vh; 
+    padding: 20px; 
+}
 
-        h1 {
-            font-size: 32px;
-            margin-bottom: 5px;
-            color: #2c3e50;
-        }
+.container { max-width: 900px; margin: 0 auto; }
 
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 14px;
-        }
+header { 
+    background: var(--color-crema); 
+    padding: 30px; 
+    border-radius: 8px; 
+    margin-bottom: 30px; 
+    text-align: center; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    border: 2px solid var(--color-madera);
+}
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+h1 { font-size: 32px; margin-bottom: 5px; color: var(--color-madera); text-transform: uppercase; }
 
-        .card h2 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #2c3e50;
-            border-left: 4px solid #667eea;
-            padding-left: 15px;
-        }
+.subtitle { color: #666; font-size: 14px; font-style: italic; }
 
-        .group-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
+.card { 
+    background: var(--color-crema); 
+    padding: 25px; 
+    border-radius: 8px; 
+    margin-bottom: 20px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    border: 1px solid #dcdcdc;
+}
 
-        .group-btn {
-            padding: 10px 20px;
-            border: 2px solid #ddd;
-            background: white;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
+.card h2 { 
+    font-size: 20px; 
+    margin-bottom: 15px; 
+    color: var(--color-madera); 
+    border-left: 5px solid var(--color-oro); 
+    padding-left: 15px; 
+}
 
-        .group-btn:hover {
-            border-color: #667eea;
-        }
+/* Botones como fichas */
+.group-selector { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
 
-        .group-btn.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
+.group-btn { 
+    padding: 10px 20px; 
+    border: 2px solid var(--color-madera); 
+    background: var(--color-crema); 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: all 0.3s; 
+    font-weight: bold; 
+    color: var(--color-madera);
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
+.group-btn:hover { background: var(--color-oro); border-color: var(--color-madera); }
+.group-btn.active { background: var(--color-madera); color: white; border-color: var(--color-madera); }
 
-        th {
-            background: #f0f0f0;
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-            color: #2c3e50;
-            border-bottom: 2px solid #ddd;
-        }
+/* Tabla estilo registro de torneo */
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
 
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-        }
+th { 
+    background: var(--color-madera); 
+    padding: 12px; 
+    text-align: left; 
+    color: var(--color-oro); 
+    text-transform: uppercase;
+}
 
-        tr:hover {
-            background: #f9f9f9;
-        }
+td { padding: 12px; border-bottom: 1px solid #ccc; }
 
-        .position {
-            font-weight: 600;
-            color: #667eea;
-            width: 40px;
-        }
+tr:hover { background: #f0ebe0; }
 
-        .points {
-            font-weight: 600;
-            color: #27ae60;
-        }
+.position { font-weight: bold; color: var(--color-madera); width: 40px; }
+.points { font-weight: bold; color: #1a6e2e; }
 
-        .match-card {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border-left: 4px solid #667eea;
-        }
+/* Tarjetas de partidos */
+.match-card { 
+    background: #fdfaf6; 
+    padding: 15px; 
+    border-radius: 4px; 
+    margin-bottom: 10px; 
+    border: 1px solid var(--color-madera); 
+}
 
-        .match-header {
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
+.match-header { font-weight: bold; color: var(--color-madera); margin-bottom: 8px; }
+.score { background: var(--color-madera); color: white; padding: 4px 8px; border-radius: 4px; }
 
-        .teams {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 8px 0;
-        }
+/* Botones de acción */
+.refresh-btn { 
+    background: var(--color-oro); 
+    color: var(--color-madera); 
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-weight: bold; 
+}
 
-        .team-name {
-            flex: 1;
-        }
-
-        .score {
-            background: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 16px;
-            min-width: 40px;
-            text-align: center;
-        }
-
-        .score.played {
-            color: #27ae60;
-        }
-
-        .score.pending {
-            color: #7f8c8d;
-        }
-
-        .match-status {
-            font-size: 12px;
-            color: #7f8c8d;
-            margin-top: 8px;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: #7f8c8d;
-        }
-
-        .empty-state p {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .refresh-btn {
-            background: #27ae60;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background 0.3s;
-            float: right;
-        }
-
-        .refresh-btn:hover {
-            background: #229954;
-        }
-
-        .last-updated {
-            color: #95a5a6;
-            font-size: 12px;
-            margin-top: 15px;
-            clear: both;
-        }
-
-        .medal {
-            font-size: 20px;
-            margin-right: 8px;
-        }
+.refresh-btn:hover { background: #b8962d; }
+.last-updated { color: #555; font-size: 11px; margin-top: 15px; }
