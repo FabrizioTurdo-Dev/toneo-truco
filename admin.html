@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - Torneo de Truco</title>
+    <link href="admin.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚽ Torneo de Truco Berlin</h1>
+            <p class="subtitle">Panel de administración</p>
+        </header>
+
+        <div class="grid">
+            <!-- Crear Grupo -->
+            <div class="card">
+                <h2>Crear nuevo grupo</h2>
+                <label>Nombre del grupo (ej: Grupo 1)</label>
+                <input type="text" id="groupName" placeholder="Grupo 1">
+                
+                <label>Equipos (uno por línea)</label>
+                <textarea id="teamsInput" rows="6" placeholder="Equipo 1&#10;Equipo 2&#10;Equipo 3"></textarea>
+                
+                <button onclick="createGroup()">Crear grupo</button>
+            </div>
+
+            <!-- Cargar Resultado -->
+            <div class="card">
+                <h2>Cargar resultado de partido</h2>
+                
+                <label>Seleccionar grupo</label>
+                <select id="groupSelect" onchange="loadMatches()">
+                    <option value="">-- Seleccionar --</option>
+                </select>
+
+                <label>Partido (sin puntos por defecto)</label>
+                <div class="match-list" id="matchList"></div>
+
+                <label style="margin-top: 15px;">Puntaje</label>
+                <div class="score-input">
+                    <input type="number" id="score1" placeholder="Pts equipo 1" min="0">
+                    <span>vs</span>
+                    <input type="number" id="score2" placeholder="Pts equipo 2" min="0">
+                </div>
+
+                <button onclick="saveScore()">Cargar puntaje</button>
+            </div>
+        </div>
+
+        <!-- Tabla de partidos sin puntos -->
+        <div class="card full-width">
+            <h2>Partidos sin cargar puntaje</h2>
+            <div id="pendingMatches" style="max-height: 300px; overflow-y: auto;">
+                <p style="color: #7f8c8d;">Cargá un grupo arriba para ver los partidos pendientes</p>
+            </div>
+        </div>
+
+        <!-- Tabla de Posiciones -->
+        <div class="card full-width">
+            <h2>Tabla de posiciones actual</h2>
+            <div id="standingsContainer"></div>
+        </div>
+
+        <!-- Acciones rápidas -->
+        <div class="card full-width">
+            <h2>Acciones rápidas</h2>
+            <button onclick="downloadData()">📥 Descargar datos (JSON)</button>
+            <button onclick="document.getElementById('uploadModal').classList.add('show')" class="secondary">📤 Cargar datos (JSON)</button>
+            <button onclick="resetAll()" class="secondary">⚠️ Reiniciar todo</button>
+        </div>
+
+        <div id="status" style="margin-top: 20px; padding: 10px; border-radius: 4px; display: none;"></div>
+    </div>
+
+    <!-- Modal de carga -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <h3>Cargar datos del torneo</h3>
+            <label>Seleccionar archivo JSON</label>
+            <input type="file" id="fileInput" accept=".json">
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button onclick="uploadData()">Cargar</button>
+                <button onclick="document.getElementById('uploadModal').classList.remove('show')" class="secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
